@@ -6,24 +6,26 @@
 	<title>	Bagus Pogar Herlambang</title>
 </head>
 <body>
-<div><div class="card text-center">
+	<div><div class="card text-center">
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="#">Home</a>
+        <a class="nav-link active" href="<?php echo base_url('Home') ?>">Home</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="About.php">About</a>
+        <a class="nav-link" href="<?php echo base_url('About') ?>">About</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="#">Contact</a>
+        <a class="nav-link disabled" href="<?php echo base_url('Contact') ?>">Contact</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="<?php echo base_url('News') ?>">News</a>
       </li>
     </ul>
   </div>
   <div class="card-body alert-primary">
-    <h5 class="card-title">Hello World !</h5>
+    <h5 class="card-title">Ini Halaman Contact</h5>
     <p class="card-text">Bagus Pogar Herlambang TI2B 1641720153</p>
-    <a href="#" class="btn btn-primary">Go somewhere</a>
   </div>
 </div></div>
 <div><script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
