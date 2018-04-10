@@ -2,7 +2,11 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Home extends CI_Controller {
-
+public function __construct()
+        {
+                parent::__construct();
+                $this->load->helper(array('form', 'url'));
+        }
 	/**
 	 * Index Page for this controller.
 	 *
@@ -21,14 +25,6 @@ class Home extends CI_Controller {
 	public function index(){
 		$this->load->model('Biodata');
 		$data["Biodata_array"] = $this->Biodata->getBiodataQueryArray();
-		$data["Biodata_object"] = $this->Biodata->getBiodataQueryObject();
-		$data["Biodatabuilder_array"] = $this->Biodata->getBiodataBuilderArray();
-		$data["Biodatabuilder_object"] = $this->Biodata->getBiodataBuilderObject();
-		$this->load->view('home', $data);
-	}
-	public function indexblogviews(){
-		$this->load->model('Berita');
-		$data[""] = $this->Biodata->getBiodataQueryArray();
 		$data["Biodata_object"] = $this->Biodata->getBiodataQueryObject();
 		$data["Biodatabuilder_array"] = $this->Biodata->getBiodataBuilderArray();
 		$data["Biodatabuilder_object"] = $this->Biodata->getBiodataBuilderObject();
