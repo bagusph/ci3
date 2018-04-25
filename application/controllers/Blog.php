@@ -15,6 +15,7 @@ public function __construct()
   
       public function add_view() {
          $data['error'] = "";
+         $this->load->model('Blog_models');
          $this->load->helper(array('form','url'));
       $this->load->library('form_validation');
       $this->form_validation->set_rules('id', 'Id', 'required');
@@ -48,7 +49,7 @@ public function __construct()
                   'title' => $this->input->post('title'),
                   'content' => $this->input->post('content'),
                   'image_file' => $dataUpload['file_name'] 
-               ); 
+               );
                $this->Blog_models->insert($data);
             redirect('Blog'); 
       }      

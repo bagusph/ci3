@@ -24,6 +24,9 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="<?php echo base_url('index.php/Blog') ?>">Blog Berita</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="<?php echo base_url('index.php/Category') ?>">Kategori</a>
+      </li>
     </ul>
     <div class="row">
       <div class="col-6">

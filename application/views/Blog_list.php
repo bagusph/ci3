@@ -24,10 +24,10 @@
       <a href="<?php echo base_url("index.php/Blog/add_view") ?>" class="btn btn-primary">Tambah Berita</a>
       <ul class="list-unstyled">
   <?php foreach ($records as $key => $value): ?>
-    <li class="media">
-    <img class="mr-3" src="<?php echo base_url() ?>uploads/<?php echo $value['image_file'] ?>" alt="Generic placeholder image" width="100px" height="150px">
-    <div class="media-body">
-      <h5 class="mt-0 mb-1"><?php echo $value['title'] ?></h5>
+    <li class="card" style="width: 18rem;">
+    <img class="card-img-top" src="<?php echo base_url() ?>uploads/<?php echo $value['image_file'] ?>" alt="Card image cap" width="100px" height="150px">
+    <div class="card-body">
+      <h5 class="card-title"><?php echo $value['title'] ?></h5>
       <h6 class="text-muted"><?php echo $value['date'] ?></h6>
       <?php echo $value['content'] ?>
       <br>
