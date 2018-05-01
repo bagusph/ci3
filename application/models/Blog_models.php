@@ -8,6 +8,10 @@ class Blog_models extends CI_Model {
 		$query = $this->db->get('berita');
 		return $query->result_array();
 	}
+    public function getCategory()
+    {
+        return $this->db->get('categories')->result_array();
+    }
 	public function insert($data) { 
          if ($this->db->insert("berita", $data)) { 
             return true; 
@@ -29,4 +33,29 @@ class Blog_models extends CI_Model {
 	    	$query = $this->db->query("select * from berita where id='$id'");
 			return $query->result_array();
 	    }
+         public function get_artikel_by_id($id)
+    {
+         // Inner Join dengan table Categories
+        $this->db->select ( '
+            blogs.*, 
+            categories.cat_id as category_id, 
+            categories.cat_name,
+            categories.cat_description,
+        ' );
+        $this->db->join('categories', 'categories.cat_id = blogs.fk_cat_id');
+
+        $query = $this->db->get_where('blogs', array('blogs.post_id' => $id));
+                    
+        return $query->row();
+    }
+    public function get_artikel_by_category($category_id)
+    {
+
+        $this->db->order_by('blogs.post_id', 'DESC');
+
+        $this->db->join('categories', 'categories.cat_id = blogs.fk_cat_id');
+        $query = $this->db->get_where('blogs', array('cat_id' => $category_id));
+  
+        return $query->result();
+    }
 }

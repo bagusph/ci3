@@ -53,3 +53,5 @@ $route['default_controller'] = 'Home';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 $route['Biodata/(:any)'] = "Home/biodata/$1";
+
+$route['category/(:num)'] = 'category/artikel/$1';

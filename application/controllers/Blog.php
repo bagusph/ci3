@@ -15,6 +15,7 @@ public function __construct()
   
       public function add_view() {
          $data['error'] = "";
+
          $this->load->model('Blog_models');
          $this->load->helper(array('form','url'));
       $this->load->library('form_validation');
@@ -23,6 +24,7 @@ public function __construct()
       $this->form_validation->set_rules('date', 'Date', 'required');
       $this->form_validation->set_rules('title', 'Title', 'required');
       $this->form_validation->set_rules('content', 'Content', 'required');
+      $data['getCategory'] = $this->Blog_models->getCategory();
       if ($this->form_validation->run() == FALSE)
                 {
                         $this->load->view('blog_create',$data);
@@ -48,7 +50,8 @@ public function __construct()
                   'date' => $this->input->post('date'),
                   'title' => $this->input->post('title'),
                   'content' => $this->input->post('content'),
-                  'image_file' => $dataUpload['file_name'] 
+                  'image_file' => $dataUpload['file_name'],
+                  'fk_cat_id' => $this->input->post('fk_cat_id')
                );
                $this->Blog_models->insert($data);
             redirect('Blog'); 
@@ -78,7 +81,8 @@ public function __construct()
                   'date' => $this->input->post('date'),
                   'title' => $this->input->post('title'),
                   'content' => $this->input->post('content'),
-                  'image_file' => $dataUpload['file_name'] 
+                  'image_file' => $dataUpload['file_name'],
+                  'fk_cat_id' => $this->input->post('fk_cat_id') 
                ); 
                $this->Blog_models->insert($data);
             redirect('Blog'); 
@@ -88,6 +92,7 @@ public function __construct()
          $data['error'] = "";
          $this->load->model("Blog_models");
          $data['result'] = $this->Blog_models->getOne($id);
+         $data['getCategory'] = $this->Blog_models->getCategory();
          $this->load->view('blog_update',$data); 
       } 
      public function update_action() { 
@@ -99,7 +104,7 @@ public function __construct()
          $config['max_height']    = 768;  
          $this->load->library('upload', $config);
          $this->upload->initialize($config);
-         
+         $data['getCategory'] = $this->Blog_models->getCategory();
          if ( ! $this->upload->do_upload('image_file')) {
             $error = array('error' => $this->upload->display_errors()); 
             $this->load->view('blog_update', $error); 

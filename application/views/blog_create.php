@@ -51,6 +51,14 @@
     <label for="image_file">Image</label>
     <input type="file" name="image_file" size="50">
   </div>
+  <div class="form-group">
+    <label for="image_file">Kategori</label>
+    <select name="fk_cat_id" id="fk_cat_id" class="form-control">
+      <?php foreach ($getCategory as $key => $value): ?>
+        <option value="<?php echo $value['cat_id'] ?>"><?php echo $value['cat_name'] ?></option>
+      <?php endforeach ?>
+    </select>
+  </div>
   <input type="submit" name="add" value="Tambah" class="btn btn-success">
           </form>
         </div>

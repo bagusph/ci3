@@ -8,7 +8,7 @@ class Category extends CI_Controller{
 
     // Load custom helper applications/helpers/MY_helper.php
     // Load semua model yang kita pakai
-    $this->load->model('blog_model');
+    $this->load->model('Blog_models');
     $this->load->model('Category_model');
   }
 
@@ -20,7 +20,7 @@ class Category extends CI_Controller{
     $this->load->model('Category_model');
     // Dapatkan semua kategori
     $data['categories'] = $this->Category_model->get_all_categories();
-    $this->load->view('cat_create', $data);
+    $this->load->view('cat_view', $data);
   }
 
   public function create() 
@@ -55,75 +55,33 @@ class Category extends CI_Controller{
   {
 
     // Menampilkan judul berdasar nama kategorinya
-    $data['page_title'] = $this->category_model->get_category_by_id($id)->cat_name;
+    $data['page_title'] = $this->Category_model->get_category_by_id($id)->cat_name;
 
     // Dapatkan semua artikel dalam kategori ini
-    $data['all_artikel'] = $this->blog_model->get_artikel_by_category($id);
+    $data['all_artikel'] = $this->Blog_models->get_artikel_by_category($id);
 
     // Kita gunakan view yang sama pada controller Blog
-    $this->load->view('templates/header');
-    $this->load->view('blogs/blog_view', $data);
-    $this->load->view('templates/footer');
+    $this->load->view('blog_view_2', $data);
   }
 
   // Membuat fungsi edit
-  public function edit($id = NULL)
+  public function edit($id)
   {
-
-    $data['page_title'] = 'Edit Kategori';
-
-    // Get artikel dari model berdasarkan $id
-    $data['category'] = $this->category_model->get_category_by_id($id);
-    // Jika id kosong atau tidak ada id yg dimaksud, lempar user ke halaman list category
-    if ( empty($id) || !$data['category'] ) redirect('blog');
-
-    // Kita butuh helper dan library berikut
-      $this->load->helper('form');
-      $this->load->library('form_validation');
-
-      // Kita validasi input sederhana, sila cek http://localhost/ci3/user_guide/libraries/form_validation.html
-    $this->form_validation->set_rules('cat_name', 'Nama Kategori', 'required',
-      array('required' => 'Isi %s donk, males amat.'));
-      $this->form_validation->set_rules('cat_description', 'Deskripsi', 'required');
-
-      // Cek apakah input valid atau tidak
-      if ($this->form_validation->run() === FALSE)
-      {
-          $this->load->view('templates/header');
-          $this->load->view('categories/cat_edit', $data);
-          $this->load->view('templates/footer');
-
-      } else {
-
-        $post_data = array(
-            'cat_name' => $this->input->post('cat_name'),
-            'cat_description' => $this->input->post('cat_description'),
-        );
-
-        $this->load->view('templates/header');
-        
-        // Update kategori sesuai post_data dan id-nya
-          if ($this->category_model->update_category($post_data, $id)) {
-            $this->load->view('blogs/blog_success', $data);
-          } else {
-            $this->load->view('blogs/blog_failed', $data);
-          }
-          $this->load->view('templates/footer'); 
-
-      }
+    $this->load->model('Category_model');
+    $data['data'] = $this->Category_model->get_category_by_id($id);
+    $this->load->view('cat_edit',$data);
   }
-
+  public function edit_action($id)
+  {
+    $this->load->model('Category_model');
+    $this->Category_model->update_category($this->input->post(),$id);
+    redirect('Category','refresh');
+  }
 
   public function delete($id)
   {
-
-    $data['page_title'] = 'Delete category';
-
-    $this->category_model->delete_category($id);
-
-    $this->load->view('templates/header');
-    $this->load->view('blogs/blog_success', $data);
-    $this->load->view('templates/footer'); 
-
+    $this->load->model('Category_model');
+    $this->Category_model->delete_category($id);
+    redirect('Category','refresh');
   }
 }
