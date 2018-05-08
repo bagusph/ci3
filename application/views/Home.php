@@ -22,10 +22,13 @@
         <a class="nav-link disabled" href="<?php echo base_url('News') ?>">News</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link disabled" href="<?php echo base_url('index.php/Blog') ?>">Blog Berita</a>
+        <a class="nav-link disabled" href="<?php echo base_url('index.php/Blog/asd') ?>">Blog Berita</a>
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="<?php echo base_url('index.php/Category') ?>">Kategori</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="<?php echo base_url('index.php/Blog/datatable') ?>">Datatables</a>
       </li>
     </ul>
     <div class="row">
