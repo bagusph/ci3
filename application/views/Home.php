@@ -30,6 +30,9 @@
       <li class="nav-item">
         <a class="nav-link disabled" href="<?php echo base_url('index.php/Blog/datatable') ?>">Datatables</a>
       </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="<?php echo base_url('Login/Logout') ?>">Logout</a>
+      </li>
     </ul>
     <div class="row">
       <div class="col-6">

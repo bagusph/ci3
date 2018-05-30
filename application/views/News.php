@@ -10,9 +10,6 @@
   <div class="card-header">
     <ul class="nav nav-tabs card-header-tabs">
       <li class="nav-item">
-        <a class="nav-link active" href="<?php echo base_url('Home') ?>">Home</a>
-      </li>
-      <li class="nav-item">
         <a class="nav-link" href="<?php echo base_url('About') ?>">About</a>
       </li>
       <li class="nav-item">
@@ -23,6 +20,12 @@
       </li>
       <li class="nav-item">
         <a class="nav-link disabled" href="<?php echo base_url('index.php/Blog') ?>">Blog Berita</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="<?php echo base_url('Login') ?>">Login</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link disabled" href="<?php echo base_url('SignUp') ?>">Daftar</a>
       </li>
     </ul>
   </div>
