@@ -32,6 +32,7 @@ class Login extends CI_Controller {
 				'username' => $username,
 				"level" => $this->Login_model->getRole($username)
 			);
+			/* Ini yang Tambah fitur user level pak*/
 			$this->session->set_userdata('login',$data);
 			if($data['level'] == '1')
 				redirect('Home','refresh');
