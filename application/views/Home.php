@@ -31,6 +31,9 @@
         <a class="nav-link disabled" href="<?php echo base_url('index.php/Blog/datatable') ?>">Datatables</a>
       </li>
       <li class="nav-item">
+        <a class="nav-link disabled" href="<?php echo base_url('index.php/member') ?>">User Manajemen</a>
+      </li>
+      <li class="nav-item">
         <a class="nav-link disabled" href="<?php echo base_url('Login/Logout') ?>">Logout</a>
       </li>
     </ul>
